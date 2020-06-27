@@ -7,9 +7,11 @@ import (
 
 	"github.com/carbon-trader/paper-core/repository"
 	"github.com/gorilla/mux"
+	"github.com/paper-command-stack/config"
 )
 
 var service = repository.PaperService{}
+var c = config.Config{}
 
 //Const
 const (
@@ -17,7 +19,12 @@ const (
 )
 
 func init() {
+	c.Read()
 
+	// load database consiguration
+	service.Server = c.Server
+	service.Database = c.Database
+	service.Connect()
 }
 
 func serverUP(router *mux.Router) {
