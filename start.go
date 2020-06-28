@@ -7,8 +7,8 @@ import (
 
 	"github.com/carbon-trader/paper-core/repository"
 	"github.com/gorilla/mux"
-	"github.com/paper-command-stack/config"
-	"github.com/paper-command-stack/controller"
+	"github.com/carbon-trader/paper-command-stack/config"
+	"github.com/carbon-trader/paper-command-stack/controller"
 )
 
 var service = repository.PaperService{}
