@@ -31,17 +31,26 @@ func init() {
 	service.CreateDBIndex()
 }
 
+/*
+ * This func up a server in a specific port
+ */
 func serverUP(router *mux.Router) {
 	fmt.Printf("Server Runing in port: %s", PORT)
 	http.ListenAndServe(PORT, router)
 }
 
+/*
+ * This func create a router
+ */
 func newRouter() *mux.Router {
 	router := mux.NewRouter().StrictSlash(true)
 	addRouter(router)
 	return router
 }
 
+/*
+ * This func add new routes to a router
+ */
 func addRouter(router *mux.Router) {
 	router.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
@@ -57,6 +66,9 @@ func addRouter(router *mux.Router) {
 	subRouter.HandleFunc("paper/{id}", controller.Delete).Methods("DELETE")
 }
 
+/*
+ * This func publish all endpoints
+ */
 func main() {
 	serverUP(newRouter())
 }
