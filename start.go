@@ -26,6 +26,9 @@ func init() {
 	service.Server = c.Server
 	service.Database = c.Database
 	service.Connect()
+
+	//Create index in DB
+	service.CreateDBIndex()
 }
 
 func serverUP(router *mux.Router) {
