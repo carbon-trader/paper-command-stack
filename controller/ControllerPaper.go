@@ -7,13 +7,8 @@ import (
 
 	"github.com/carbon-trader/paper-core/model"
 	"github.com/carbon-trader/paper-core/repository"
-	"gopkg.in/mgo.v2/bson"
+	"github.com/gorilla/mux"
 )
-
-//FastPaper struct
-type FastPaper struct {
-	ID bson.ObjectId `json:"id"`
-}
 
 var service = repository.PaperService{}
 
@@ -50,9 +45,43 @@ func Save(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	_fast := FastPaper{
-		ID: idR,
+	responWithJSON(w, http.StatusOK, map[string]string{"id": idR.Hex()})
+}
+
+func Delete(w http.ResponseWriter, r *http.Request) {
+	defer r.Body.Close()
+
+	//Get the params in request
+	params := mux.Vars(r)
+
+	if err := service.Delete(params["id"]); err != nil {
+		respondWithERROR(w, http.StatusInternalServerError, err.Error())
+		return
 	}
 
-	responWithJSON(w, http.StatusOK, _fast)
+	responWithJSON(w, http.StatusOK, map[string]string{"result": "success"})
+}
+
+func Update(w http.ResponseWriter, r *http.Request) {
+	defer r.Body.Close()
+
+	//Get pamerters in the request
+	params := mux.Vars(r)
+
+	//initilize a paper as PaperModel
+	var paper model.PaperModel
+
+	// returns an error if the body was different of model.Papermodel
+	if err := json.NewDecoder(r.Body).Decode(&paper); err != nil {
+		respondWithERROR(w, http.StatusBadRequest, "Invalid resquest payload.")
+		return
+	}
+
+	// returns an error if receive a bad signal of database
+	if err := service.Update(params["id"], paper); err != nil {
+		respondWithERROR(w, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	responWithJSON(w, http.StatusOK, map[string]string{"result": "success"})
 }
