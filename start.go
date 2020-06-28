@@ -8,6 +8,7 @@ import (
 	"github.com/carbon-trader/paper-core/repository"
 	"github.com/gorilla/mux"
 	"github.com/paper-command-stack/config"
+	"github.com/paper-command-stack/controller"
 )
 
 var service = repository.PaperService{}
@@ -46,6 +47,9 @@ func addRouter(router *mux.Router) {
 		json.NewEncoder(w).Encode(map[string]bool{"ok": true})
 
 	}).Methods("GET")
+
+	subRouter := router.PathPrefix("/api/v1").Subrouter()
+	subRouter.HandleFunc("/paper", controller.Save).Methods("POST")
 }
 
 func main() {
