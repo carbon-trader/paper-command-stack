@@ -7,7 +7,13 @@ import (
 
 	"github.com/carbon-trader/paper-core/model"
 	"github.com/carbon-trader/paper-core/repository"
+	"gopkg.in/mgo.v2/bson"
 )
+
+//FastPaper struct
+type FastPaper struct {
+	ID bson.ObjectId `json:"id"`
+}
 
 var service = repository.PaperService{}
 
@@ -44,5 +50,9 @@ func Save(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	responWithJSON(w, http.StatusOK, "id:"+idR)
+	_fast := FastPaper{
+		ID: idR,
+	}
+
+	responWithJSON(w, http.StatusOK, _fast)
 }
