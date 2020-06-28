@@ -28,6 +28,7 @@ func responWithJSON(w http.ResponseWriter, code int, payload interface{}) {
 	w.Write(response)
 }
 
+//Save information in database
 func Save(w http.ResponseWriter, r *http.Request) {
 	defer r.Body.Close()
 
@@ -48,6 +49,7 @@ func Save(w http.ResponseWriter, r *http.Request) {
 	responWithJSON(w, http.StatusOK, map[string]string{"id": idR.Hex()})
 }
 
+//Delete information in database
 func Delete(w http.ResponseWriter, r *http.Request) {
 	defer r.Body.Close()
 
@@ -62,6 +64,7 @@ func Delete(w http.ResponseWriter, r *http.Request) {
 	responWithJSON(w, http.StatusOK, map[string]string{"result": "success"})
 }
 
+//Update information in database
 func Update(w http.ResponseWriter, r *http.Request) {
 	defer r.Body.Close()
 
