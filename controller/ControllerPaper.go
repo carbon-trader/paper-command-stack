@@ -13,10 +13,10 @@ import (
 var service = repository.PaperService{}
 
 func respondWithERROR(w http.ResponseWriter, code int, msg string) {
-	responWithJSON(w, code, msg)
+	respondWithJSON(w, code, msg)
 }
 
-func responWithJSON(w http.ResponseWriter, code int, payload interface{}) {
+func respondWithJSON(w http.ResponseWriter, code int, payload interface{}) {
 	response, err := json.Marshal(payload)
 
 	if err != nil {
@@ -46,7 +46,7 @@ func Save(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	responWithJSON(w, http.StatusOK, map[string]string{"id": idR.Hex()})
+	respondWithJSON(w, http.StatusOK, map[string]string{"id": idR.Hex()})
 }
 
 //Delete information in database
@@ -61,7 +61,7 @@ func Delete(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	responWithJSON(w, http.StatusOK, map[string]string{"result": "success"})
+	respondWithJSON(w, http.StatusOK, map[string]string{"result": "success"})
 }
 
 //Update information in database
@@ -86,5 +86,5 @@ func Update(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	responWithJSON(w, http.StatusOK, map[string]string{"result": "success"})
+	respondWithJSON(w, http.StatusOK, map[string]string{"result": "success"})
 }

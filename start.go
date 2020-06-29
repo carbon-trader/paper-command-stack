@@ -5,10 +5,10 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/carbon-trader/paper-core/repository"
-	"github.com/gorilla/mux"
 	"github.com/carbon-trader/paper-command-stack/config"
 	"github.com/carbon-trader/paper-command-stack/controller"
+	"github.com/carbon-trader/paper-core/repository"
+	"github.com/gorilla/mux"
 )
 
 var service = repository.PaperService{}
@@ -60,10 +60,10 @@ func addRouter(router *mux.Router) {
 
 	}).Methods("GET")
 
-	subRouter := router.PathPrefix("/api/v1").Subrouter()
+	subRouter := router.PathPrefix("/api/v1/papers").Subrouter()
 	subRouter.HandleFunc("/paper", controller.Save).Methods("POST")
 	subRouter.HandleFunc("/paper/{id}", controller.Update).Methods("PUT")
-	subRouter.HandleFunc("paper/{id}", controller.Delete).Methods("DELETE")
+	subRouter.HandleFunc("/paper/{id}", controller.Delete).Methods("DELETE")
 }
 
 /*
