@@ -62,7 +62,7 @@ func addRouter(router *mux.Router) {
 
 	subRouter := router.PathPrefix("/api/v1/papers").Subrouter()
 	subRouter.HandleFunc("/paper", controller.Save).Methods("POST")
-	subRouter.HandleFunc("/paper/{id}", controller.Update).Methods("PUT")
+	subRouter.HandleFunc("/paper", controller.Update).Methods("PUT")
 	subRouter.HandleFunc("/paper/{id}", controller.Delete).Methods("DELETE")
 }
 
