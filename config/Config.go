@@ -15,14 +15,15 @@ type Config struct {
 
 //Read func
 func (c *Config) Read() {
-	switch env := os.Getenv("ENVIRONMENT"); env {
-	case "dev", "prd", "qa":
-		if _, err := toml.DecodeFile("/var/config/config_"+os.Getenv("ENVIRONMENT")+".toml", &c); err != nil {
+	switch env := os.Getenv("GO_PROFILE_ACTIVE"); env {
+
+	case "dev", "prd", "qa", "test":
+		if _, err := toml.DecodeFile("/var/config/application_"+os.Getenv("GO_PROFILE_ACTIVE")+".toml", &c); err != nil {
 			log.Fatal(err)
 		}
 		break
 	default:
-		if _, err := toml.DecodeFile("config.toml", &c); err != nil {
+		if _, err := toml.DecodeFile("application.toml", &c); err != nil {
 			log.Fatal(err)
 		}
 		break

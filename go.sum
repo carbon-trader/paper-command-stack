@@ -1,9 +1,9 @@
 github.com/BurntSushi/toml v0.3.1 h1:WXkYYl6Yr3qBf1K79EBnL4mak0OimBfB0XUf9Vl28OQ=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
-github.com/carbon-trader/paper-core v0.0.0-20200629012402-7f261c6db5e4 h1:4//N/1bGyzQgl9+py0SqIaqB0RudVd7tjsjpgFti1a0=
-github.com/carbon-trader/paper-core v0.0.0-20200629012402-7f261c6db5e4/go.mod h1:VCNik9vGG++Lf0vyIU0PtH4KwHxKP2b7L1rsKR1AkAw=
 github.com/carbon-trader/paper-core v0.0.0-20201027164708-830fe906b259 h1:me262ZgT2vKPE7H0N/v4kGRZhwJgEwO8ya6E00EUnf0=
 github.com/carbon-trader/paper-core v0.0.0-20201027164708-830fe906b259/go.mod h1:VCNik9vGG++Lf0vyIU0PtH4KwHxKP2b7L1rsKR1AkAw=
+github.com/carbon-trader/paper-core v0.1.0 h1:vmPonfng4tTg7RthM++PfjN7VcXMlAz5qFxKvES8nbA=
+github.com/carbon-trader/paper-core v0.1.0/go.mod h1:VCNik9vGG++Lf0vyIU0PtH4KwHxKP2b7L1rsKR1AkAw=
 github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=
 github.com/gorilla/mux v1.7.4 h1:VuZ8uybHlWmqV03+zRzdwKL4tUnIp1MAQtp1mIFE1bc=
 github.com/gorilla/mux v1.7.4/go.mod h1:DVbg23sWSpFRCP0SfiEN6jmj59UnW/n46BH5rLB71So=

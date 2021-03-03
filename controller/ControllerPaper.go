@@ -31,7 +31,7 @@ func Save(w http.ResponseWriter, r *http.Request) {
 	defer r.Body.Close()
 
 	//
-	var paper model.PaperModel
+	var paper model.Paper
 
 	//
 	if err := json.NewDecoder(r.Body).Decode(&paper); err != nil {
@@ -74,7 +74,7 @@ func Update(w http.ResponseWriter, r *http.Request) {
 	defer r.Body.Close()
 
 	//initilize a paper as PaperModel
-	var paper model.PaperModel
+	var paper model.Paper
 
 	// returns an error if the body was different of model.Papermodel
 	if err := json.NewDecoder(r.Body).Decode(&paper); err != nil {
